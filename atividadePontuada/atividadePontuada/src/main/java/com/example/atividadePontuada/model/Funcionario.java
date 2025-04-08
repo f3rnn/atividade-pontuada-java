@@ -3,6 +3,7 @@ package com.example.atividadePontuada.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -18,17 +19,22 @@ public class Funcionario {
     @Size(max = 11, message = "O CPF deve ter no máximo 11 caracteres")
     private String cpf;
 
+    @NotBlank(message = "A data de nascimento é obrigatória")
     private String dataNascimento;
 
+    @NotNull(message = "O sexo deve ser informado")
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
+    @NotNull(message = "O setor deve ser informado")
     @Enumerated(EnumType.STRING)
     private Setor setor;
 
+    @NotNull(message = "O estado civil deve ser informado")
     @Enumerated(EnumType.STRING)
     private EstadoCivil estadoCivil;
 
+    @NotNull(message = "O salário não pode estar vazio")
     private double salario;
 
     @NotBlank(message = "O e-mail é obrigatório")
